@@ -1,42 +1,25 @@
 import React from 'react';
 import Board from '../Board/Board';
 import classes from './Game.module.css';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { makeMove, jumpToMove } from './gameSlice';
 
 function Game() {
-  const [gameState, setGameState] = useState({
-    stepNumber: 0,
-    xIsNext: true,
-    history: [{ squares: Array(9).fill(null) }],
-  });
+  const game = useSelector((state) => state.game);
+  const dispatch = useDispatch();
 
   const handleClick = (i) => {
-    const history = gameState.history.slice(0, gameState.stepNumber + 1);
+    const history = game.history.slice(0, game.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-
-    squares[i] = gameState.xIsNext ? 'X' : 'O';
-
-    setGameState((prevState) => ({
-      stepNumber: history.length,
-      xIsNext: !prevState.xIsNext,
-      history: history.concat([
-        {
-          squares: squares,
-        },
-      ]),
-    }));
+    return dispatch(makeMove(i));
   };
 
   const jumpTo = (step) => {
-    setGameState((prevState) => ({
-      ...prevState,
-      stepNumber: step,
-      xIsNext: step % 2 === 0,
-    }));
+    dispatch(jumpToMove(step));
   };
 
   const calculateWinner = (squares) => {
@@ -63,10 +46,10 @@ function Game() {
     return null;
   };
 
-  const current = gameState.history[gameState.stepNumber];
+  const current = game.history[game.stepNumber];
   const winner = calculateWinner(current.squares);
 
-  const moves = gameState.history.map((step, move) => {
+  const moves = game.history.map((step, move) => {
     const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
       <li key={move}>
@@ -81,7 +64,7 @@ function Game() {
   if (winner) {
     status = 'Winner: ' + winner;
   } else {
-    status = 'Next player: ' + (gameState.xIsNext ? 'X' : 'O');
+    status = 'Next player: ' + (game.xIsNext ? 'X' : 'O');
   }
 
   return (
