@@ -4,18 +4,24 @@
 }
 
 .gameInfo {
-  margin-left: 20px;
+  margin-left: 2rem;
+  color: white;
 }
 
 .gameMoves {
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
 }
 
 .status {
-  margin-bottom: 20px;
+  margin-left: 0.5rem;
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 .title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: bolder;
+  font-weight: 900;
+  font-size: 5rem;
+  color: white;
 }

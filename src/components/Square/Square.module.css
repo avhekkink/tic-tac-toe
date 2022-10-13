@@ -1,16 +1,18 @@
 .square {
-  background: #fff;
-  border: 6px double #999;
+  border: 6px double rgb(255, 255, 255);
   float: left;
   font-size: 6rem;
   font-weight: bold;
+  font-family: 'Shadows Into Light', cursive;
   line-height: 7rem;
+  color: rgb(255, 255, 255);
   height: 10rem;
   width: 10rem;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
+  background: none;
 }
 
 @media only screen and (max-width: 770px) {

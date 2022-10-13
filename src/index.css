@@ -1,13 +1,16 @@
 body {
-  font: 14px 'Century Gothic', Futura, sans-serif;
-  margin: 20px;
-  padding-top: 10vh;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1.5rem;
+  padding-top: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(../public/chalkboard.jpg);
 }
 
 ol,
 ul {
   padding-left: 30px;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
